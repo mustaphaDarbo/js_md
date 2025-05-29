@@ -1,31 +1,112 @@
+
+:root {
+  --primary-color: #4a90e2;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+  --bg-color: #f5f7fa;
+  --text-color: #333;
+  --card-bg: #fff;
+  --border-radius: 12px;
+  --transition: 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  padding: 1rem;
+  padding: 2rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 600px;
-  margin: auto;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 2rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--primary-color);
 }
 
 form {
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-input:invalid {
-  border: 2px solid red;
+form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
 }
 
-input:valid {
-  border: 2px solid green;
+form input,
+form select {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border: 2px solid #ccc;
+  border-radius: var(--border-radius);
+  transition: border-color var(--transition);
+  font-size: 1rem;
+}
+
+form input:valid {
+  border-color: var(--success-color);
+}
+
+form input:invalid {
+  border-color: var(--error-color);
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+button {
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #357abd;
+}
+
+#summaryCard {
+  text-align: left;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+#summaryCard p {
+  margin: 0.5rem 0;
 }
 
 @media (min-width: 768px) {
@@ -33,16 +114,7 @@ input:valid {
     grid-template-columns: 1fr 1fr;
   }
 
-  form label {
-    display: flex;
-    flex-direction: column;
-  }
-
-  h2 {
-    grid-column: span 2;
-  }
-
-  button {
+  h2, button {
     grid-column: span 2;
   }
 }
