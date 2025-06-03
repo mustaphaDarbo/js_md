@@ -1,0 +1,21 @@
+
+--- B-1: Hoisting Surprise ---
+
+Console Output:
+undefined
+42
+
+Explanation:
+The variable `value` is declared using `var`, which is hoisted to the top of the function.
+So on line ①, `value` exists but is undefined.
+After the assignment inside the `if`, line ② logs `42`.
+
+
+--- B-2: Temporal Dead Zone ---
+
+Console Output:
+ReferenceError: Cannot access 'theme' before initialization
+
+Explanation:
+`const theme` is in the Temporal Dead Zone from the start of the block until its declaration.
+Accessing it before it's initialized causes a ReferenceError, even though the destructuring has a default value.
